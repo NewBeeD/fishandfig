@@ -23,19 +23,32 @@ export function Header({
   cart,
   publicStoreDomain,
 }: HeaderProps) {
+  
   const {shop, menu} = header;
+
+  
   return (
     <header className="header">
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
+        {/* <strong>{shop.name}</strong> */}
+
+        <div className='font-hapyMonkey font-extrabold tracking-widest'>
+          Fish&Fig
+        </div>
+
       </NavLink>
+
+      
+
       <HeaderMenu
         menu={menu}
         viewport="desktop"
         primaryDomainUrl={header.shop.primaryDomain.url}
         publicStoreDomain={publicStoreDomain}
       />
+
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+
     </header>
   );
 }
@@ -56,6 +69,7 @@ export function HeaderMenu({
 
   return (
     <nav className={className} role="navigation">
+      
       {viewport === 'mobile' && (
         <NavLink
           end
@@ -67,6 +81,7 @@ export function HeaderMenu({
           Home
         </NavLink>
       )}
+
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
         if (!item.url) return null;
 
@@ -102,6 +117,7 @@ function HeaderCtas({
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
+      
       <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
         <Suspense fallback="Sign in">
           <Await resolve={isLoggedIn} errorElement="Sign in">

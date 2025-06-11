@@ -2,6 +2,8 @@ import {Suspense} from 'react';
 import {Await, NavLink} from 'react-router';
 import type {FooterQuery, HeaderQuery} from 'storefrontapi.generated';
 
+
+
 interface FooterProps {
   footer: Promise<FooterQuery | null>;
   header: HeaderQuery;
@@ -13,6 +15,8 @@ export function Footer({
   header,
   publicStoreDomain,
 }: FooterProps) {
+  
+  
   return (
     <Suspense>
       <Await resolve={footerPromise}>

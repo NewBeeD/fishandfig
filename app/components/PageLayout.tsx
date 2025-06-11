@@ -7,6 +7,8 @@ import type {
 } from 'storefrontapi.generated';
 import {Aside} from '~/components/Aside';
 import {Footer} from '~/components/Footer';
+
+import FooterComp from './Footer/Footer';
 import {Header, HeaderMenu} from '~/components/Header';
 import {CartMain} from '~/components/CartMain';
 import {
@@ -32,11 +34,13 @@ export function PageLayout({
   isLoggedIn,
   publicStoreDomain,
 }: PageLayoutProps) {
+  
   return (
     <Aside.Provider>
       <CartAside cart={cart} />
       <SearchAside />
       <MobileMenuAside header={header} publicStoreDomain={publicStoreDomain} />
+
       {header && (
         <Header
           header={header}
@@ -45,12 +49,18 @@ export function PageLayout({
           publicStoreDomain={publicStoreDomain}
         />
       )}
+
       <main>{children}</main>
-      <Footer
+
+
+      <FooterComp />
+
+      {/* <Footer
         footer={footer}
         header={header}
         publicStoreDomain={publicStoreDomain}
-      />
+      /> */}
+
     </Aside.Provider>
   );
 }

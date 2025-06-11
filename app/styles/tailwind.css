@@ -3,4 +3,15 @@
  * https://tailwindcss.com/docs/v4-beta#css-first-configuration
  */
 
+@font-face{
+
+  font-family: happyMonkey;
+  src: url("../../public/fonts/Smooch_Sans/SmoochSans-VariableFont_wght.ttf")
+}
+
 @import 'tailwindcss';
+
+@theme{
+
+  --font-hapyMonkey: happyMonkey, "sans-serif";
+}

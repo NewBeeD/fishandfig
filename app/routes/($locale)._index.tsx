@@ -8,6 +8,23 @@ import type {
 } from 'storefrontapi.generated';
 import {ProductItem} from '~/components/ProductItem';
 
+
+// Homepage Components
+import MainSection from '~/components/homepage/MainSection';
+import OurMission from '~/components/homepage/OurMission';
+import Categories from '~/components/homepage/Categories';
+import BecomeaSupplier from '~/components/homepage/BecomeaSupplier';
+import OurOperation from '~/components/homepage/OurOpertion';
+import OurStory from '~/components/homepage/OurStory';
+import Community from '~/components/homepage/OurCommunity';
+
+
+
+
+
+
+
+
 export const meta: MetaFunction = () => {
   return [{title: 'Hydrogen | Home'}];
 };
@@ -57,12 +74,24 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 }
 
 export default function Homepage() {
+  
   const data = useLoaderData<typeof loader>();
   return (
+
     <div className="home">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
+
+      <MainSection />
+      <OurMission />
+      <Categories />
+      <BecomeaSupplier />
+      <OurStory />
+      <Community />
+
+
+      {/* <FeaturedCollection collection={data.featuredCollection} />
+      <RecommendedProducts products={data.recommendedProducts} /> */}
     </div>
+
   );
 }
 

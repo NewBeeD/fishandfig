@@ -20,23 +20,27 @@ export function ProductItem({
   const variantUrl = useVariantUrl(product.handle);
   const image = product.featuredImage;
   return (
+    
+    
     <Link
-      className="product-item"
+      className="product-item m-auto flex flex-col items-center"
       key={product.id}
       prefetch="intent"
       to={variantUrl}
     >
       {image && (
-        <Image
-          alt={image.altText || product.title}
-          aspectRatio="1/1"
-          data={image}
-          loading={loading}
-          sizes="(min-width: 45em) 400px, 100vw"
-        />
+        <div className="xs:w-[90%] w-[80%]">
+          <Image
+            alt={image.altText || product.title}
+            aspectRatio="1/1"
+            data={image}
+            loading={loading}
+            sizes="(min-width: 45em) 400px, 100vw"
+          />
+        </div>
       )}
-      <h4>{product.title}</h4>
-      <small>
+      <h4 className='text-3xl'>{product.title}</h4>
+      <small className='text-lg tracking-widest'>
         <Money data={product.priceRange.minVariantPrice} />
       </small>
     </Link>

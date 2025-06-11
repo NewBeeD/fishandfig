@@ -14,6 +14,7 @@ export function PaginatedResourceSection<NodesType>({
   resourcesClassName?: string;
 }) {
   return (
+    
     <Pagination connection={connection}>
       {({nodes, isLoading, PreviousLink, NextLink}) => {
         const resourcesMarkup = nodes.map((node, index) =>
@@ -25,14 +26,17 @@ export function PaginatedResourceSection<NodesType>({
             <PreviousLink>
               {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
             </PreviousLink>
+
             {resourcesClassName ? (
               <div className={resourcesClassName}>{resourcesMarkup}</div>
             ) : (
               resourcesMarkup
             )}
+
             <NextLink>
               {isLoading ? 'Loading...' : <span>Load more ↓</span>}
             </NextLink>
+            
           </div>
         );
       }}

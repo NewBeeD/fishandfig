@@ -84,7 +84,8 @@ export async function loader(args: LoaderFunctionArgs) {
       publicStorefrontId: env.PUBLIC_STOREFRONT_ID,
     }),
     consent: {
-      checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
+      // checkoutDomain: env.PUBLIC_CHECKOUT_DOMAIN,
+      checkoutDomain: env.PUBLIC_STORE_DOMAIN,
       storefrontAccessToken: env.PUBLIC_STOREFRONT_API_TOKEN,
       withPrivacyBanner: false,
       // localize the privacy banner
@@ -99,6 +100,7 @@ export async function loader(args: LoaderFunctionArgs) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
 async function loadCriticalData({context}: LoaderFunctionArgs) {
+  
   const {storefront} = context;
 
   const [header] = await Promise.all([
@@ -143,8 +145,11 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 }
 
 export function Layout({children}: {children?: React.ReactNode}) {
+
   const nonce = useNonce();
   const data = useRouteLoaderData<RootLoader>('root');
+
+ 
 
   return (
     <html lang="en">
@@ -157,7 +162,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className='font-hapyMonkey'>
         {data ? (
           <Analytics.Provider
             cart={data.cart}
