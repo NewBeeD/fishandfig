@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="mt-auto pt-6 pb-6 px-4 bg-black">
       <div className="max-w-screen-lg mx-auto text-center text-white">
         <p className="text-sm">
-          © {new Date().getFullYear()} Fresh Caribbean Produce
+          © {new Date().getFullYear()} Fish & Fig
         </p>
 
         <p className="text-sm mt-2">

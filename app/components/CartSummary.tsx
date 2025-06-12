@@ -15,10 +15,14 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
 
   return (
     <div aria-labelledby="cart-summary" className={className}>
-      <h4>Totals</h4>
+
+      <h4 className='text-lg font-extrabold tracking-widest'>Totals</h4>
       <dl className="cart-subtotal">
-        <dt>Subtotal</dt>
-        <dd>
+        
+        <dt className='text-lg font-bold'>Subtotal:&nbsp;&nbsp; </dt>
+        
+        <dd className='text-lg font-extrabold tracking-widest'>
+          
           {cart.cost?.subtotalAmount?.amount ? (
             <Money data={cart.cost?.subtotalAmount} />
           ) : (
@@ -38,7 +42,8 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl?: string}) {
   return (
     <div>
       <a href={checkoutUrl} target="_self">
-        <p>Continue to Checkout &rarr;</p>
+        
+        <p className='font-bold'>Continue to Checkout &rarr;</p>
       </a>
       <br />
     </div>

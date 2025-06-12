@@ -31,6 +31,7 @@ export function CartMain({layout, cart: originalCart}: CartMainProps) {
   return (
     <div className={className}>
       <CartEmpty hidden={linesCount} layout={layout} />
+
       <div className="cart-details">
         <div aria-labelledby="cart-lines">
           <ul>
@@ -41,6 +42,7 @@ export function CartMain({layout, cart: originalCart}: CartMainProps) {
         </div>
         {cartHasItems && <CartSummary cart={cart} layout={layout} />}
       </div>
+      
     </div>
   );
 }

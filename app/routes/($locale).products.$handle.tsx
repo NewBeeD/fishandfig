@@ -13,6 +13,10 @@ import {ProductImage} from '~/components/ProductImage';
 import {ProductForm} from '~/components/ProductForm';
 import {redirectIfHandleIsLocalized} from '~/lib/redirect';
 
+
+// Shipping Details
+import DeliveryNotice from '~/components/DeliveryNotice/DeliveryNotice';
+
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [
     {title: `Hydrogen | ${data?.product.title ?? ''}`},
@@ -102,28 +106,58 @@ export default function Product() {
   const {title, descriptionHtml} = product;
 
   return (
-    <div className="product">
-      <ProductImage image={selectedVariant?.image} />
-      <div className="product-main">
-        <h1>{title}</h1>
-        <ProductPrice
-          price={selectedVariant?.price}
-          compareAtPrice={selectedVariant?.compareAtPrice}
-        />
-        <br />
-        <ProductForm
-          productOptions={productOptions}
-          selectedVariant={selectedVariant}
-        />
-        <br />
-        <br />
-        <p>
-          <strong>Description</strong>
-        </p>
-        <br />
-        <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
-        <br />
+    <div className='pt-12 px-2'>
+
+
+      <div className="product">
+
+        <ProductImage image={selectedVariant?.image} />
+        
+        <div className="product-main">
+          <h1 className='!text-4xl tracking-wider'>{title}</h1>
+          
+          <ProductPrice
+            price={selectedVariant?.price}
+            compareAtPrice={selectedVariant?.compareAtPrice}
+          />
+
+          <hr className="border-t border-gray-300 my-4 w-[90%]" />
+          <br />
+          <ProductForm
+            productOptions={productOptions}
+            selectedVariant={selectedVariant}
+          />
+          
+          <br />
+          <div className='text-xs text-red-700 tracking-widest'>Add to cart first, then choose your quantity</div>
+          <hr className="border-t border-gray-300 my-4 w-[90%]" />
+          <br />
+          <p>
+            <strong>Description</strong>
+          </p>
+          <br />
+          <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
+          <br />
+
+
+          
+        </div>
+
       </div>
+
+
+        <hr className="border-t border-gray-300 my-4 w-[99%]" />
+
+
+        <div className='w-[95%] m-auto'>
+
+          <DeliveryNotice />
+
+        </div>
+
+
+
+
       <Analytics.ProductView
         data={{
           products: [

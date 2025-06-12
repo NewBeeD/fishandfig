@@ -41,20 +41,24 @@ export function PageLayout({
       <SearchAside />
       <MobileMenuAside header={header} publicStoreDomain={publicStoreDomain} />
 
-      {header && (
-        <Header
-          header={header}
-          cart={cart}
-          isLoggedIn={isLoggedIn}
-          publicStoreDomain={publicStoreDomain}
-        />
-      )}
+      {/* Flex container wrapper */}
+      <div className="min-h-screen flex flex-col">
+        {header && (
+          <Header
+            header={header}
+            cart={cart}
+            isLoggedIn={isLoggedIn}
+            publicStoreDomain={publicStoreDomain}
+          />
+        )}
 
-      <main>{children}</main>
+        {/* Growable main content */}
+        <main className="flex-grow">{children}</main>
 
-
-      <FooterComp />
-
+        {/* Footer stays at bottom */}
+        <FooterComp />
+        
+      </div>
       {/* <Footer
         footer={footer}
         header={header}

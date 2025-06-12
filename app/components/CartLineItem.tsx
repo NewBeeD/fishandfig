@@ -49,14 +49,14 @@ export function CartLineItem({
           }}
         >
           <p>
-            <strong>{product.title}</strong>
+            <strong className='text-2xl'>{product.title}</strong>
           </p>
         </Link>
         <ProductPrice price={line?.cost?.totalAmount} />
         <ul>
           {selectedOptions.map((option) => (
             <li key={option.name}>
-              <small>
+              <small className='text-sm font-bold'>
                 {option.name}: {option.value}
               </small>
             </li>
@@ -81,29 +81,35 @@ function CartLineQuantity({line}: {line: CartLine}) {
 
   return (
     <div className="cart-line-quantity">
-      <small>Quantity: {quantity} &nbsp;&nbsp;</small>
+      <small className='text-lg'>Quantity: {quantity} &nbsp;&nbsp;&nbsp;</small>
+      
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
         <button
           aria-label="Decrease quantity"
           disabled={quantity <= 1 || !!isOptimistic}
           name="decrease-quantity"
           value={prevQuantity}
+          className='text-lg border-2 border-red-900 p-1'
         >
           <span>&#8722; </span>
         </button>
       </CartLineUpdateButton>
       &nbsp;
+      &nbsp;
+      
       <CartLineUpdateButton lines={[{id: lineId, quantity: nextQuantity}]}>
         <button
           aria-label="Increase quantity"
           name="increase-quantity"
           value={nextQuantity}
           disabled={!!isOptimistic}
+          className='text-lg border-2 border-blue-900 p-1'
         >
           <span>&#43;</span>
         </button>
       </CartLineUpdateButton>
       &nbsp;
+      
       <CartLineRemoveButton lineIds={[lineId]} disabled={!!isOptimistic} />
     </div>
   );

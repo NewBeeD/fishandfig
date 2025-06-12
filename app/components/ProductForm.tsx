@@ -17,17 +17,22 @@ export function ProductForm({
 }) {
   const navigate = useNavigate();
   const {open} = useAside();
+  
   return (
     <div className="product-form">
+
+
       {productOptions.map((option) => {
         // If there is only a single value in the option values, don't display the option
         if (option.optionValues.length === 1) return null;
 
         return (
           <div className="product-options" key={option.name}>
-            <h5>{option.name}</h5>
+            <h5 className='text-2xl font-extrabold mb-3'>{option.name}</h5>
             <div className="product-options-grid">
+              
               {option.optionValues.map((value) => {
+                
                 const {
                   name,
                   handle,
@@ -60,6 +65,7 @@ export function ProductForm({
                       }}
                     >
                       <ProductOptionSwatch swatch={swatch} name={name} />
+
                     </Link>
                   );
                 } else {
@@ -91,16 +97,23 @@ export function ProductForm({
                         }
                       }}
                     >
-                      <ProductOptionSwatch swatch={swatch} name={name} />
+
+                      <div className='text-lg tracking-wider font-bold hover:cursor-pointer'>
+                        <ProductOptionSwatch swatch={swatch} name={name} />
+                      </div>
                     </button>
                   );
                 }
               })}
+
             </div>
             <br />
           </div>
         );
       })}
+
+
+      
       <AddToCartButton
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {
