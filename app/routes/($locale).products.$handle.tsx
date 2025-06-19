@@ -84,8 +84,14 @@ function loadDeferredData({context, params}: LoaderFunctionArgs) {
   return {};
 }
 
+
+
 export default function Product() {
   const {product} = useLoaderData<typeof loader>();
+
+  console.log(product);
+  
+ 
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -103,7 +109,8 @@ export default function Product() {
     selectedOrFirstAvailableVariant: selectedVariant,
   });
 
-  const {title, descriptionHtml} = product;
+  const {title, descriptionHtml, selectedOrFirstAvailableVariant} = product;
+  
 
   return (
     <div className='pt-12 px-2'>
@@ -121,8 +128,19 @@ export default function Product() {
             compareAtPrice={selectedVariant?.compareAtPrice}
           />
 
+          <div>
+            <p className="text-LG text-gray-700 mt-2">
+              {typeof selectedOrFirstAvailableVariant.quantityAvailable === 'number'
+                ? `${selectedOrFirstAvailableVariant.quantityAvailable} lbs in stock`
+                : 'Inventory info currently not available.'}
+            </p>
+          </div>
+
+
           <hr className="border-t border-gray-300 my-4 w-[90%]" />
           <br />
+
+          
           <ProductForm
             productOptions={productOptions}
             selectedVariant={selectedVariant}
@@ -180,6 +198,7 @@ export default function Product() {
 const PRODUCT_VARIANT_FRAGMENT = `#graphql
   fragment ProductVariant on ProductVariant {
     availableForSale
+    quantityAvailable
     compareAtPrice {
       amount
       currencyCode
@@ -268,3 +287,6 @@ const PRODUCT_QUERY = `#graphql
   }
   ${PRODUCT_FRAGMENT}
 ` as const;
+
+
+

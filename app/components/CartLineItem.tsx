@@ -74,6 +74,7 @@ export function CartLineItem({
  * hasn't yet responded that it was successfully added to the cart.
  */
 function CartLineQuantity({line}: {line: CartLine}) {
+  
   if (!line || typeof line?.quantity === 'undefined') return null;
   const {id: lineId, quantity, isOptimistic} = line;
   const prevQuantity = Number(Math.max(0, quantity - 1).toFixed(0));

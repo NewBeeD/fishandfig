@@ -13,6 +13,13 @@ export default defineConfig({
     reactRouter(),
     tsconfigPaths(),
   ],
+  server: {
+    // Add this block
+    allowedHosts: [
+      '.ngrok-free.app', // Your ngrok host
+      'shopify.com'
+    ]
+  },
   build: {
     // Allow a strict Content-Security-Policy
     // withtout inlining assets as base64:

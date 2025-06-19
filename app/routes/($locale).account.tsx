@@ -10,6 +10,7 @@ export function shouldRevalidate() {
 }
 
 export async function loader({context}: LoaderFunctionArgs) {
+  
   const {data, errors} = await context.customerAccount.query(
     CUSTOMER_DETAILS_QUERY,
   );
