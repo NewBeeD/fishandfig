@@ -15,6 +15,13 @@ interface HeaderProps {
   publicStoreDomain: string;
 }
 
+const pages = [
+  { name: 'Home', link: '/' },
+  { name: 'Shop', link: '/shop' },
+  { name: 'About Us', link: '/aboutus' },
+];
+
+
 type Viewport = 'desktop' | 'mobile';
 
 export function Header({
@@ -29,10 +36,11 @@ export function Header({
   
   return (
     <header className="header">
+      
       <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
         {/* <strong>{shop.name}</strong> */}
 
-        <div className='font-hapyMonkey font-extrabold tracking-widest'>
+        <div className='font-hapyMonkey font-extrabold tracking-widest text-2xl'>
           Fish&Fig
         </div>
 
@@ -66,11 +74,14 @@ export function HeaderMenu({
 }) {
   const className = `header-menu-${viewport}`;
   const {close} = useAside();
+  
 
   return (
+    
+    
     <nav className={className} role="navigation">
       
-      {viewport === 'mobile' && (
+      {/* {viewport === 'mobile' && (
         <NavLink
           end
           onClick={close}
@@ -80,9 +91,9 @@ export function HeaderMenu({
         >
           Home
         </NavLink>
-      )}
+      )} */}
 
-      {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
+      {/* {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
         if (!item.url) return null;
 
         // if the url is internal, we strip the domain
@@ -92,6 +103,7 @@ export function HeaderMenu({
           item.url.includes(primaryDomainUrl)
             ? new URL(item.url).pathname
             : item.url;
+
         return (
           <NavLink
             className="header-menu-item"
@@ -105,7 +117,35 @@ export function HeaderMenu({
             {item.title}
           </NavLink>
         );
+      })} */}
+
+      {FALLBACK_HEADER_MENU.items.map((item) => {
+        if (!item.url) return null;
+
+        // if the url is internal, we strip the domain
+        const url =
+          item.url.includes('myshopify.com') ||
+          item.url.includes(publicStoreDomain) ||
+          item.url.includes(primaryDomainUrl)
+            ? new URL(item.url).pathname
+            : item.url;
+
+        return (
+          <NavLink
+            className="header-menu-item text-lg"
+            end
+            key={item.id}
+            onClick={close}
+            prefetch="intent"
+            style={activeLinkStyle}
+            to={url}
+          >
+            {item.title}
+          </NavLink>
+        );
       })}
+
+
     </nav>
   );
 }
@@ -116,15 +156,18 @@ function HeaderCtas({
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart'>) {
   return (
     <nav className="header-ctas" role="navigation">
+      
       <HeaderMenuMobileToggle />
       
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+      {/* <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
         <Suspense fallback="Sign in">
           <Await resolve={isLoggedIn} errorElement="Sign in">
             {(isLoggedIn) => (isLoggedIn ? 'Account' : 'Sign in')}
           </Await>
         </Suspense>
-      </NavLink>
+      </NavLink> */}
+
+      
       <SearchToggle />
       <CartToggle cart={cart} />
     </nav>
@@ -157,8 +200,27 @@ function CartBadge({count}: {count: number | null}) {
   const {publish, shop, cart, prevCart} = useAnalytics();
 
   return (
+    // <a
+    //   href="/cart"
+
+    //   onClick={(e) => {
+    //     e.preventDefault();
+    //     open('cart');
+    //     publish('cart_viewed', {
+    //       cart,
+    //       prevCart,
+    //       shop,
+    //       url: window.location.href || '',
+    //     } as CartViewPayload);
+    //   }}
+    // >
+    //   Cart {count === null ? <span>&nbsp;</span> : <span className={count > 0 ?'text-red-900 font-extrabold': ''}>{count}</span>}
+    // </a>
+
+
     <a
       href="/cart"
+      className="relative inline-block"
       onClick={(e) => {
         e.preventDefault();
         open('cart');
@@ -170,7 +232,13 @@ function CartBadge({count}: {count: number | null}) {
         } as CartViewPayload);
       }}
     >
-      Cart {count === null ? <span>&nbsp;</span> : count}
+      <span>Cart</span>
+
+      {count !== null && count > 0 && (
+        <span className="absolute -top-3 -right-4 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+          {count}
+        </span>
+      )}
     </a>
   );
 }
@@ -193,41 +261,42 @@ function CartBanner() {
 
 const FALLBACK_HEADER_MENU = {
   id: 'gid://shopify/Menu/199655587896',
+  
   items: [
     {
       id: 'gid://shopify/MenuItem/461609500728',
       resourceId: null,
       tags: [],
-      title: 'Collections',
+      title: 'Home',
       type: 'HTTP',
-      url: '/collections',
+      url: '/',
       items: [],
     },
     {
       id: 'gid://shopify/MenuItem/461609533496',
       resourceId: null,
       tags: [],
-      title: 'Blog',
+      title: 'Shop',
       type: 'HTTP',
-      url: '/blogs/journal',
+      url: '/collections/all',
       items: [],
     },
     {
       id: 'gid://shopify/MenuItem/461609566264',
       resourceId: null,
       tags: [],
-      title: 'Policies',
+      title: 'Our Story',
       type: 'HTTP',
-      url: '/policies',
+      url: '/aboutus',
       items: [],
     },
     {
       id: 'gid://shopify/MenuItem/461609599032',
       resourceId: 'gid://shopify/Page/92591030328',
       tags: [],
-      title: 'About',
+      title: 'Contact Us',
       type: 'PAGE',
-      url: '/pages/about',
+      url: 'contactus',
       items: [],
     },
   ],

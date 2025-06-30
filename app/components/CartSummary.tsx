@@ -11,10 +11,7 @@ type CartSummaryProps = {
 
 export function CartSummary({cart, layout}: CartSummaryProps) {
   const className =
-    layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
-
-    console.log('Here I am',cart);
-    
+    layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';    
 
   return (
     <div aria-labelledby="cart-summary" className={className}>

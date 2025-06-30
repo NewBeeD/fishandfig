@@ -12,7 +12,7 @@ const Community = () => {
 
         {/* Description */}
         <div>
-          <p className="text-[10px] sm:text-base md:text-lg text-left leading-snug sm:leading-normal">
+          <p className="text-[15px] sm:text-base md:text-lg text-left leading-snug sm:leading-normal">
             We’re more than a marketplace—we’re a movement. Every order supports Dominican farmers and fishers, preserves traditional agriculture, and helps build sustainable food systems for future generations. Together, we’re growing stronger communities, one harvest at a time.
           </p>
         </div>

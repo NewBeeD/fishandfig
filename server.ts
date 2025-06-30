@@ -7,6 +7,7 @@ import {createAppLoadContext} from '~/lib/context';
  * Export a fetch handler in module format.
  */
 export default {
+  
   async fetch(
     request: Request,
     env: Env,

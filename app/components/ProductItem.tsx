@@ -18,6 +18,8 @@ export function ProductItem({
   loading?: 'eager' | 'lazy';
 }) {
   const variantUrl = useVariantUrl(product.handle);
+
+  
   const image = product.featuredImage;
   return (
     
@@ -29,7 +31,7 @@ export function ProductItem({
       to={variantUrl}
     >
       {image && (
-        <div className="xs:w-[90%] w-[80%]">
+        <div className="xs:w-[90%] w-[90%]">
           <Image
             alt={image.altText || product.title}
             aspectRatio="1/1"

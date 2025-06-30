@@ -12,7 +12,7 @@ const OurStory = () => {
 
         {/* Paragraph */}
         <div>
-          <p className="text-[10px] sm:text-base md:text-lg text-left leading-snug sm:leading-normal">
+          <p className="text-[15px] sm:text-base md:text-lg text-left leading-snug sm:leading-normal">
             “Born from a fisherman’s boat and a farmer’s field, we started by
             hand-delivering Dominica’s freshest harvests and catch to neighbors.
             Today, we’re your direct link to the island’s vibrant flavors—and

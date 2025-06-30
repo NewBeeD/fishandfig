@@ -50,6 +50,12 @@ export default function Collection() {
   
   const {products} = useLoaderData<typeof loader>();
 
+  console.log(products);
+
+
+
+    
+
   return (
     <div className="collection ">
       
@@ -57,11 +63,11 @@ export default function Collection() {
 
       <div className='sm:m-auto sm:w-[95%] p-2 mt-16'>
 
-        <div className='xs:flex xs:flex-col xs:items-center xs:align-center  sm:w-[90%] sm:m-auto'>
+        <div className='xs:flex xs:flex-col xs:items-center xs:align-center  sm:w-[90%] sm:m-auto '>
 
           <PaginatedResourceSection
             connection={products}
-            resourcesClassName="products-grid"
+            resourcesClassName="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-2"
           >
             {({node: product, index}) => (
               <ProductItem
@@ -82,6 +88,7 @@ export default function Collection() {
     </div>
   );
 }
+
 
 const COLLECTION_ITEM_FRAGMENT = `#graphql
   fragment MoneyCollectionItem on MoneyV2 {
@@ -110,7 +117,10 @@ const COLLECTION_ITEM_FRAGMENT = `#graphql
   }
 ` as const;
 
+
 // NOTE: https://shopify.dev/docs/api/storefront/latest/objects/product
+
+
 const CATALOG_QUERY = `#graphql
   query Catalog(
     $country: CountryCode

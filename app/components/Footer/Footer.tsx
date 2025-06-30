@@ -11,11 +11,11 @@ export default function Footer() {
         </p>
 
         <p className="text-sm mt-2">
-          <Link to="/about" className="hover:underline">
+          <Link to="/aboutus" className="hover:underline">
             About Us
           </Link>
           {' | '}
-          <Link to="/contact" className="hover:underline">
+          <Link to="/contactus" className="hover:underline">
             Contact
           </Link>
         </p>

@@ -83,13 +83,13 @@ export default function Homepage() {
       <MainSection />
       <OurMission />
       <Categories />
+      {/* <FeaturedCollection collection={data.featuredCollection} /> */}
+      <RecommendedProducts products={data.recommendedProducts} />
       <BecomeaSupplier />
       <OurStory />
       <Community />
 
 
-      {/* <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} /> */}
     </div>
 
   );
@@ -124,14 +124,24 @@ function RecommendedProducts({
 }) {
   return (
     <div className="recommended-products">
-      <h2>Recommended Products</h2>
+      <h2 className='text-center !mb-8 !text-2xl'>Recommended Products</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {(response) => (
             <div className="recommended-products-grid">
               {response
                 ? response.products.nodes.map((product) => (
-                    <ProductItem key={product.id} product={product} />
+
+
+                    <div key={product.id} className="recommended-product m-auto">
+
+                      <ProductItem  product={product} />
+
+                    </div>
+                    
+                    
+
+
                   ))
                 : null}
             </div>
