@@ -4,6 +4,8 @@ import {getPaginationVariables, Image, Money} from '@shopify/hydrogen';
 import {PaginatedResourceSection} from '~/components/PaginatedResourceSection';
 import {ProductItem} from '~/components/ProductItem';
 
+import { CurrencySelector } from '~/components/CurrencySelector';
+
 export const meta: MetaFunction<typeof loader> = () => {
   return [{title: `Hydrogen | Products`}];
 };
@@ -49,11 +51,6 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 export default function Collection() {
   
   const {products} = useLoaderData<typeof loader>();
-
-  console.log(products);
-
-
-
     
 
   return (
@@ -62,6 +59,8 @@ export default function Collection() {
       <h1 className='!text-5xl text-center underline underline-offset-8'>Products</h1>
 
       <div className='sm:m-auto sm:w-[95%] p-2 mt-16'>
+
+        <CurrencySelector />
 
         <div className='xs:flex xs:flex-col xs:items-center xs:align-center  sm:w-[90%] sm:m-auto '>
 

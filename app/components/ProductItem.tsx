@@ -7,6 +7,9 @@ import type {
 } from 'storefrontapi.generated';
 import {useVariantUrl} from '~/lib/variants';
 
+import { useCurrency } from '~/lib/Context/CurrencyContext';
+import { formatCurrency } from '~/lib/FormatCurrency';
+
 export function ProductItem({
   product,
   loading,
@@ -21,6 +24,12 @@ export function ProductItem({
 
   
   const image = product.featuredImage;
+
+  const {currency, exchangeRates} = useCurrency();
+
+  
+
+
   return (
     
     
@@ -43,7 +52,17 @@ export function ProductItem({
       )}
       <h4 className='text-3xl'>{product.title}</h4>
       <small className='text-lg tracking-widest'>
-        <Money data={product.priceRange.minVariantPrice} />
+
+
+        {/* <Money data={product.priceRange.minVariantPrice} /> */}
+
+        {formatCurrency({
+          amount: parseFloat(product.priceRange.minVariantPrice.amount),
+          currency,
+          exchangeRates,
+        })}
+
+
       </small>
     </Link>
   );

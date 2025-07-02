@@ -7,6 +7,10 @@ import {ProductPrice} from './ProductPrice';
 import {useAside} from './Aside';
 import type {CartApiQueryFragment} from 'storefrontapi.generated';
 
+
+import { useCurrency } from '~/lib/Context/CurrencyContext';
+import { formatCurrency } from '~/lib/FormatCurrency';
+
 type CartLine = OptimisticCartLine<CartApiQueryFragment>;
 
 /**
@@ -24,6 +28,11 @@ export function CartLineItem({
   const {product, title, image, selectedOptions} = merchandise;
   const lineItemUrl = useVariantUrl(product.handle, selectedOptions);
   const {close} = useAside();
+
+
+  //  console.log('Product',line);
+
+  const {currency, exchangeRates} = useCurrency();
 
   return (
     <li key={id} className="cart-line">
@@ -52,7 +61,21 @@ export function CartLineItem({
             <strong className='text-2xl'>{product.title}</strong>
           </p>
         </Link>
-        <ProductPrice price={line?.cost?.totalAmount} />
+
+
+        {/* <ProductPrice price={line?.cost?.totalAmount} /> */}
+
+        <small className="text-lg tracking-widest">
+          {formatCurrency({
+            amount: parseFloat(line?.cost?.totalAmount?.amount ?? '0'),
+            currency,
+            exchangeRates,
+          })}
+        </small>
+
+
+
+
         <ul>
           {selectedOptions.map((option) => (
             <li key={option.name}>
@@ -82,7 +105,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
 
   return (
     <div className="cart-line-quantity">
-      <small className='text-lg'>Quantity: {quantity} &nbsp;&nbsp;&nbsp;</small>
+      <small className='text-xl'>Quantity: {quantity} &nbsp;&nbsp;&nbsp;</small>
       
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
         <button
@@ -90,7 +113,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
           disabled={quantity <= 1 || !!isOptimistic}
           name="decrease-quantity"
           value={prevQuantity}
-          className='text-lg border-2 border-red-900 p-1'
+          className='text-lg border-2 border-red-900 p-[5px]'
         >
           <span>&#8722; </span>
         </button>
@@ -104,7 +127,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
           name="increase-quantity"
           value={nextQuantity}
           disabled={!!isOptimistic}
-          className='text-lg border-2 border-blue-900 p-1'
+          className='text-lg border-2 border-blue-900 p-[5px]'
         >
           <span>&#43;</span>
         </button>

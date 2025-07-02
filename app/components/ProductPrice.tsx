@@ -1,6 +1,10 @@
 import {Money} from '@shopify/hydrogen';
 import type {MoneyV2} from '@shopify/hydrogen/storefront-api-types';
 
+import { useCurrency } from '~/lib/Context/CurrencyContext';
+
+
+
 export function ProductPrice({
   price,
   compareAtPrice,
@@ -8,6 +12,9 @@ export function ProductPrice({
   price?: MoneyV2;
   compareAtPrice?: MoneyV2 | null;
 }) {
+
+
+  const {currency, exchangeRates} = useCurrency();
 
   return (
     <div className="product-price tracking-wider font-extrabold">

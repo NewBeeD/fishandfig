@@ -4,7 +4,7 @@ const AboutUs = () => {
       <main className="flex flex-col space-y-12">
 
         {/* Hero Section */}
-        <section className="w-full py-12 text-center bg-[url('/images/Section1/MainImage1.png')] bg-cover bg-center text-white shadow-md">
+        <section className="w-full py-12 text-center bg-[url('/images/Village/Home.png')] bg-cover bg-center text-white shadow-md">
           <div className="w-[90%] m-auto bg-black/60 p-6 rounded-lg">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">Fresh From Sea to Shelf</h1>
             <p className="text-lg sm:text-xl">

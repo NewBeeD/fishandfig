@@ -14,6 +14,11 @@ import {ProductForm} from '~/components/ProductForm';
 import {redirectIfHandleIsLocalized} from '~/lib/redirect';
 
 
+import { useCurrency } from '~/lib/Context/CurrencyContext';
+import { formatCurrency } from '~/lib/FormatCurrency';
+import { CurrencySelector } from '~/components/CurrencySelector';
+
+
 // Shipping Details
 import DeliveryNotice from '~/components/DeliveryNotice/DeliveryNotice';
 
@@ -88,6 +93,8 @@ function loadDeferredData({context, params}: LoaderFunctionArgs) {
 
 export default function Product() {
   const {product} = useLoaderData<typeof loader>();
+  const {currency, exchangeRates} = useCurrency();
+
  
 
   // Optimistically selects a variant with given available variant information
@@ -120,14 +127,22 @@ export default function Product() {
         <div className="product-main">
           <h1 className='!text-4xl tracking-wider'>{title}</h1>
           
-          <ProductPrice
+          {/* <ProductPrice
             price={selectedVariant?.price}
             compareAtPrice={selectedVariant?.compareAtPrice}
-          />
+          /> */}
+
+          <small className="text-lg tracking-wider font-extrabold">
+            {formatCurrency({
+              amount: parseFloat(selectedOrFirstAvailableVariant?.price.amount),
+              currency,
+              exchangeRates,
+            })}
+          </small>
 
           <div>
             <p className="text-LG text-gray-700 mt-2">
-              {typeof selectedOrFirstAvailableVariant.quantityAvailable === 'number'
+              {typeof selectedOrFirstAvailableVariant?.quantityAvailable === 'number'
                 ? `${selectedOrFirstAvailableVariant.quantityAvailable} lbs in stock`
                 : 'Inventory info currently not available.'}
             </p>

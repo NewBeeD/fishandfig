@@ -17,6 +17,8 @@ import BecomeaSupplier from '~/components/homepage/BecomeaSupplier';
 import OurOperation from '~/components/homepage/OurOpertion';
 import OurStory from '~/components/homepage/OurStory';
 import Community from '~/components/homepage/OurCommunity';
+import Home from '~/components/HowItWorks/Home';
+import OurBenefits from '~/components/HowItWorks/OurBenefits';
 
 
 
@@ -82,10 +84,12 @@ export default function Homepage() {
 
       <MainSection />
       <OurMission />
+      <Home />
       <Categories />
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
       <BecomeaSupplier />
+      <OurBenefits />
       <OurStory />
       <Community />
 

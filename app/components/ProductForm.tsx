@@ -8,6 +8,9 @@ import {AddToCartButton} from './AddToCartButton';
 import {useAside} from './Aside';
 import type {ProductFragment} from 'storefrontapi.generated';
 
+import { useCurrency } from '~/lib/Context/CurrencyContext';
+import { formatCurrency } from '~/lib/FormatCurrency';
+
 export function ProductForm({
   productOptions,
   selectedVariant,
@@ -17,6 +20,7 @@ export function ProductForm({
 }) {
   const navigate = useNavigate();
   const {open} = useAside();
+  const {currency, exchangeRates} = useCurrency();
   
   return (
     <div className="product-form">
