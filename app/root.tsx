@@ -167,24 +167,28 @@ export function Layout({children}: {children?: React.ReactNode}) {
       <body className='font-hapyMonkey'>
         {data ? (
 
-          <CurrencyProvider>
+          <div className="global-container">
 
-            <Analytics.Provider
-              cart={data.cart}
-              shop={data.shop}
-              consent={data.consent}
-            >
-              <PageLayout {...data}>
+            <CurrencyProvider>
 
+              <Analytics.Provider
+                cart={data.cart}
+                shop={data.shop}
+                consent={data.consent}
+              >
+                <PageLayout {...data}>
+
+                  
+                    {children}
                 
-                  {children}
-               
 
 
-              </PageLayout>
-            </Analytics.Provider>
+                </PageLayout>
+              </Analytics.Provider>
 
-          </CurrencyProvider>
+            </CurrencyProvider>
+          </div>
+
 
         ) : (
           children

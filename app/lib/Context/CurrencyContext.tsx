@@ -47,6 +47,7 @@ const defaultRates = {
   XCD: 2.7,
   EUR: 0.93,
   GBP: 0.79,
+  CAD: 1.36,
 };
 
 type CurrencyContextType = {

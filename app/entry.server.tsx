@@ -17,6 +17,10 @@ export default async function handleRequest(
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
+    connectSrc: [
+    // (ie. 'wss://<your-ngrok-domain>.app:*')
+    'wss://https://898aa7e43e7a.ngrok-free.appp:*',
+  ],
   });
 
   const body = await renderToReadableStream(

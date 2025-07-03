@@ -60,7 +60,7 @@ export function ProductItem({
           amount: parseFloat(product.priceRange.minVariantPrice.amount),
           currency,
           exchangeRates,
-        })}
+        })}/lb
 
 
       </small>

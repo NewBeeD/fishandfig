@@ -21,6 +21,7 @@ export function CurrencySelector() {
         <option value="XCD">XCD</option>
         <option value="EUR">EUR</option>
         <option value="GBP">GBP</option>
+        <option value="CAD">CAD</option>
       </select>
     </div>
   );

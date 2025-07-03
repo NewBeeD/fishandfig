@@ -274,7 +274,7 @@ button.reset:hover:not(:has(> *)) {
 .cart-summary-aside {
   background: white;
   border-top: 1px solid var(--color-dark);
-  bottom: 0;
+  bottom: 70px;
   padding-top: 0.75rem;
   position: absolute;
   width: calc(var(--aside-width) - 40px);
@@ -558,3 +558,27 @@ button.reset:hover:not(:has(> *)) {
 
 
 /* About us section */
+
+
+/* ...............Global Container................. */
+
+/* app/styles/layout.css */
+.global-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px; /* Optional: Add padding for mobile */
+}
+
+/* Ensure full-width elements like headers can still break out */
+.global-container > * {
+  max-width: none !important;
+}
+
+/* Optional: Make sure direct children can control their own width */
+.global-container > * > * {
+  max-width: 100% !important;
+}
+
+
+/* ...............Global Container................. */

@@ -3,6 +3,7 @@ import {storefrontRedirect} from '@shopify/hydrogen';
 import {createRequestHandler} from '@shopify/remix-oxygen';
 import {createAppLoadContext} from '~/lib/context';
 
+
 /**
  * Export a fetch handler in module format.
  */
@@ -30,6 +31,8 @@ export default {
         mode: process.env.NODE_ENV,
         getLoadContext: () => appLoadContext,
       });
+
+
 
       const response = await handleRequest(request);
 
