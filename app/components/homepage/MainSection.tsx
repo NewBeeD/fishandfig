@@ -23,7 +23,7 @@ const MainSection = () => {
         </h1>
 
         <Link to="/collections/all">
-          <button className="mt-8 w-[150px] h-[60px] text-[20px] font-extrabold bg-[#f68b1f] transform scale-100 transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-black">
+          <button className="mt-8 w-[150px] h-[60px] text-[20px] font-extrabold bg-[#f68b1f] cursor-pointer transform scale-100 transition-transform duration-200 ease-in-out hover:scale-105 hover:bg-black">
             SHOP NOW
           </button>
         </Link>
