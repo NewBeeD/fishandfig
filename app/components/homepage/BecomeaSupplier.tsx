@@ -12,7 +12,7 @@ const BecomeaSupplier = () => {
       <div className="flex flex-col space-y-1">
         <Link to="/collections/all" className="inline-block">
           <button
-            className="bg-[#f68b1f] font-black tracking-widest transform scale-100 transition-transform transition-colors duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3"
+            className="bg-[#f68b1f] font-black tracking-widest transform scale-100 transition-transform transition-colors duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3 "
             type="button"
           >
             Shop Now
@@ -21,9 +21,9 @@ const BecomeaSupplier = () => {
 
         <p className="text-white font-black">or</p>
 
-        <a href="/become-a-supplier" className="inline-block">
+        <a href="/contactus" className="inline-block">
           <button
-            className="bg-[#f68b1f] font-black tracking-widest transform scale-100 transition-transform transition-colors duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3"
+            className="bg-[#f68b1f] font-black tracking-widest transform scale-100 transition-transform transition-colors duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3 cursor-pointer"
             type="button"
           >
             Become a Supplier

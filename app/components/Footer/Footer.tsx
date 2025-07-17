@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto pt-6 pb-6 px-4 bg-black">
+    <footer className="mt-auto pt-6 pb-6 px-4 bg-black !w-full">
       <div className="max-w-screen-lg mx-auto text-center text-white">
         <p className="text-sm">
           © {new Date().getFullYear()} Fish & Fig

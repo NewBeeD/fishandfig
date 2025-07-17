@@ -25,7 +25,7 @@ const Categories = () => {
             
               <button
                 type="button"
-                className="bg-[#f68b1f] font-black tracking-widest text-left transform scale-100 transition duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3 rounded"
+                className="bg-[#f68b1f] font-black tracking-widest text-left transform scale-100 transition duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3 rounded cursor-pointer"
                 style={{ letterSpacing: '0.25em' }}
               >
                 Seafood
@@ -51,7 +51,7 @@ const Categories = () => {
             
             <button
               type="button"
-              className="bg-[#f68b1f] font-black tracking-widest text-left transform scale-100 transition-transform transition-colors duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3 rounded"
+              className="bg-[#f68b1f] font-black tracking-widest text-left transform scale-100 transition-transform transition-colors duration-200 ease-in-out hover:scale-115 hover:bg-black text-white px-6 py-3 rounded cursor-pointer"
               style={{ letterSpacing: '0.25em' }}
             >
               Farm
