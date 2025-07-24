@@ -28,7 +28,7 @@ import OurBenefits from '~/components/HowItWorks/OurBenefits';
 
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [{title: 'Fish&Fig'}];
 };
 
 export async function loader(args: LoaderFunctionArgs) {
