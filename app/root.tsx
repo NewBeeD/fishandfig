@@ -163,13 +163,8 @@ export function Layout({children}: {children?: React.ReactNode}) {
         <link rel="stylesheet" href={appStyles}></link>
 
 
-        {/* TODO: This is addition Added for tab logo */}
-        <link rel="manifest" href="/manifest.webmanifest"></link>
-
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
-        <meta name="theme-color" content="#1a202c" />
+        {/* Added for tab logo */}
+        {/* <link rel="manifest" href="/manifest.webmanifest"></link> */}
 
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 

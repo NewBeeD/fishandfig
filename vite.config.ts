@@ -12,6 +12,7 @@ export default defineConfig({
     oxygen(),
     reactRouter(),
     tsconfigPaths(),
+    
   ],
   server: {
     // Add this block

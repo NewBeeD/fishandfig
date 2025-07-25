@@ -4,7 +4,7 @@
     "./**/*.ts",
     "./**/*.tsx",
     ".react-router/types/**/*"
-  ],
+, "public/service-worker.js"  ],
   "compilerOptions": {
     "lib": [
       "DOM",
